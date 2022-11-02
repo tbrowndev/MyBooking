@@ -1,15 +1,30 @@
 <!--Header-->
-<app-header></app-header>
+<header-comp></header-comp>
 <!--Item List-->
-<div class="w-screen flex justify-center">
-  <div class="w-[30rem]">
+<div class="w-screen flex justify-center mt-4">
+  <div class="w-[20rem] md:w-[40rem] lg:w-[60rem] xl:w-[80rem]">
+    
     <!--Filters-->
-    <div>
-      <span>Filters: </span>
+    <div class="flex flex-wrap gap-3">
+      <span>Filters:</span>
+      <ng-container *ngFor="let tag of tags.sort()">
+        <span class="rounded-full shadow-md px-2 cursor-pointer select-none" [ngClass]="filterTags.includes(tag)? 'bg-actionColor text-white':' bg-gray-200 opacity-50'" (click)="toggleFilter(tag)">{{tag}}</span>
+      </ng-container>
     </div>
+    
     <!--Results-->
     <div>
-      Results
+      <hr class="my-4">
+      <div class="flex flex-wrap gap-3 justify-center items-center">
+        
+        <!--Results listing-->
+        <ng-container *ngFor="let item of items">
+          <item-comp [data]="item" (bookButtonClicked)="handleBookClick($event)" [hidden]="hideItem(item.tags)"></item-comp>
+        </ng-container>
+
+      </div>
+      <hr class="my-4">
     </div>
+
   </div>
 </div>

@@ -1,1 +1,10 @@
-<p>item works!</p>
+<div class="w-[15rem] shadow-xl rounded-xl bg-secondaryColor border p-2 flex gap-2 flex-col items-center relative my-4">
+  <div class="absolute -right-[.1rem] -top-3 bg-actionColor rounded-t text-white px-2 shadow-sm text-sm select-none">{{data.duration}} Min.</div>
+  <div class="bg-gray-200 w-[7.5rem] aspect-square rounded-full"></div>
+  <div class="text-lg">{{data.title | titlecase}}</div>
+  <div class="text-sm">{{data.description}}</div>
+  <div class="w-3/4 flex justify-between items-center">
+    <span class="text-gray-500 select-none">{{data.price | currency: 'USD'}}</span>
+    <input type="button" value="Book" class="cursor-pointer border px-4 py-1 rounded-lg bg-actionColor text-white opacity-100 hover:opacity-90 select-none" (click)="emitBookClick()"/>
+  </div>
+</div>

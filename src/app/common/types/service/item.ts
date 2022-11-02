@@ -3,6 +3,7 @@ type Item = {
   description: string
   duration: number
   price: number
+  tags: string[]
 }
 
 export default Item;
