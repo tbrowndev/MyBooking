@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --background-color: rgb(240, 240, 240);
+  --forground-color: rgb(255, 255, 255);
+  --action-color: rgb(67, 72, 210);
+
+  --success-color: rgb(59, 205, 59);
+  --warning-color: rgb(255, 191, 54);
+  --error-color: rgb(236, 92, 92);
+}
+
