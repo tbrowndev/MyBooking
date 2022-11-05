@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from 'src/app/components/service/list/list.component';
 import { ItemComponent } from 'src/app/components/service/item/item.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +14,8 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
     HeaderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class ServiceModule { }

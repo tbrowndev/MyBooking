@@ -3,8 +3,8 @@ import Item from "../service/item"
 import ClientForm from "./client"
 
 type Appointment = {
-  client: ClientForm
-  service: Item
+  client: ClientForm | undefined
+  service: Item | undefined
   addons: AddOn[]
   date: string
   time: string

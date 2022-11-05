@@ -1,0 +1,97 @@
+<div class=" flex flex-col justify-center w-screen h-screen relative">
+  <div class="absolute top-[1rem] right-[1rem]">
+    <input type="button" class="cursor-pointer hover:text-errorColor" value="Close" (click)="closeLogin()" />
+  </div>
+
+  <form (ngSubmit)="submit()" #login_Form="ngForm" class="p-4 rounded-xl shadow-xl w-2/3 md:w-1/3 m-auto border" *ngIf="!switchToRegister">
+    <h1 class="text-center text-xl">Login</h1>
+    
+    <!--Login Form Errors-->
+    <div id="login_errors" class="text-center">
+      <span *ngIf="(email.touched || email.dirty) && email.invalid" class="text-errorColor italic">Email must be valid. </span>
+      <span *ngIf="(password.touched || password.dirty) && password.invalid" class="text-errorColor italic">Password is not valid. </span>
+    </div>
+
+    <!--Email Field-->
+    <div class="my-4 w-full">
+      <label for="email">Email</label>
+      <input type="text" id="email" class="p-2 rounded-lg w-full border" placeholder="Email Address" [(ngModel)]="loginForm.email" name="email" #email="ngModel" required/>
+    </div>
+
+    <!--Password Field-->
+    <div class="my-4 w-full">
+      <label for="password">Password</label>
+      <input type="password" id="password" class="p-2 rounded-lg w-full border" placeholder="Password" [(ngModel)]="loginForm.password" name="password" #password="ngModel" required/>
+    </div>
+
+    <!--Login Button-->
+    <div class="my-4 w-full">
+      <button type="submit" [disabled]="login_Form.form.invalid" class="p-2 w-full rounded-lg bg-actionColor text-white disabled:cursor-not-allowed disabled:opacity-50 flex justify-center gap-2">
+        Login
+        <svg *ngIf="isLoading()" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!--Switch to Registeration-->
+    <div class="my-1 w-full">
+      No Account? <input type="button" value="Register" class="text-actionColor cursor-pointer" (click)="switchToRegister = true; login_Form.reset()"/>
+    </div>
+
+  </form>
+
+  <!--Register Form-->
+  <form (ngSubmit)="submit()" #register_Form="ngForm" class="p-4 rounded-xl shadow-xl w-2/3 md:w-1/3 m-auto border" *ngIf="switchToRegister">
+    <h1 class="text-center text-xl">Register</h1>
+    
+    <!--Register Form Errors-->
+    <div id="register_errors" class="text-center">
+      <span *ngIf="(email.touched || email.dirty) && email.invalid" class="text-errorColor italic">Email must be valid. </span>
+      <span *ngIf="(password.touched || password.dirty) && password.invalid" class="text-errorColor italic">Password is not valid. </span>
+    </div>
+
+    <!--Firstname Field-->
+    <div class="my-4 w-full">
+      <label for="firstname">First Name</label>
+      <input type="text" id="firstname" class="p-2 rounded-lg w-full border" placeholder="First Name" [(ngModel)]="registerForm.firstname" name="firstname" #firstname="ngModel" required/>
+    </div>
+
+    <!--Lastname Field-->
+    <div class="my-4 w-full">
+      <label for="lastname">Last Name</label>
+      <input type="text" id="lastname" class="p-2 rounded-lg w-full border" placeholder="Last Name" [(ngModel)]="registerForm.lastname" name="lastname" #lastname="ngModel" required/>
+    </div>
+
+    <!--Email Field-->
+    <div class="my-4 w-full">
+      <label for="email">Email</label>
+      <input type="text" id="email" class="p-2 rounded-lg w-full border" placeholder="Email Address" [(ngModel)]="registerForm.email" name="email" #email="ngModel" required/>
+    </div>
+
+    <!--Password Field-->
+    <div class="my-4 w-full">
+      <label for="password">Password</label>
+      <input type="password" id="password" class="p-2 rounded-lg w-full border" placeholder="Password" [(ngModel)]="registerForm.password" name="password" #password="ngModel" required/>
+    </div>
+
+    <!--Login Button-->
+    <div class="my-4 w-full">
+      <button type="submit" [disabled]="register_Form.form.invalid" class="p-2 w-full rounded-lg bg-actionColor text-white disabled:cursor-not-allowed disabled:opacity-50 flex justify-center gap-2">
+        Register
+        <svg *ngIf="isLoading()" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!--Switch to Registeration-->
+    <div class="my-1 w-full">
+      Have an Account? <input type="button" value="Login" class="text-actionColor cursor-pointer" (click)="switchToRegister = false; register_Form.reset()"/>
+    </div>
+
+  </form>
+
+</div>

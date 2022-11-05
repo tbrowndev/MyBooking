@@ -23,7 +23,7 @@ export class ItemsService {
         description: 'Incididunt officia voluptate officia exercitation nisi nulla magna do. Non voluptate aliqua ea minim esse. Do id mollit quis proident aliquip sunt cupidatat.',
         duration: 20,
         price: 30,
-        tags: ['Service'+i, 'Item'+i]
+        tags: ['Service'+i, 'Item' +i]
       })
     }
   }

@@ -2,8 +2,14 @@
   <div class="h-full flex flex-row justify-between items-end">
     <span class="text-xl font-bold">My Booking</span>
     <div class="flex flex-row gap-4">
-      <a class="text-xl font-bold hover:text-actionColor cursor-pointer">Login</a>
-      <a class="text-xl font-bold hover:text-actionColor cursor-pointer">My Bookings</a>
+      <ng-container *ngIf="!isAuthenticated()">
+        <a class="text-xl font-bold hover:text-actionColor cursor-pointer" [routerLink]="['/login']">Login</a>
+      </ng-container>
+
+      <ng-container *ngIf="isAuthenticated()">
+        <a class="text-xl font-bold hover:text-actionColor cursor-pointer" [routerLink]="['/bookings']">My Bookings</a>
+        <a class="text-xl font-bold hover:text-actionColor cursor-pointer" (click)="logoutUser()">Logout</a>
+      </ng-container>
     </div>
   </div>
 </div>
