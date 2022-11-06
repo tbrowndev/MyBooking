@@ -9,7 +9,7 @@ import { ServiceModule } from './modules/service/service.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
