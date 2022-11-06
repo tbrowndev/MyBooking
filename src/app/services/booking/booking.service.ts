@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Appointment from 'src/app/common/types/booking/appointment';
+import AddOn from 'src/app/common/types/service/addon';
 import Item from 'src/app/common/types/service/item';
 
 @Injectable({
@@ -7,7 +8,13 @@ import Item from 'src/app/common/types/service/item';
 })
 export class BookingService {
 
-  private booking: Appointment = {} as Appointment;
+  private booking: Appointment = {
+    client: undefined,
+    service: undefined,
+    addons: [],
+    date: '',
+    time: '',
+  };
 
   constructor() {
     this.booking.service =  {
@@ -21,6 +28,7 @@ export class BookingService {
 
   setService(service: Item): void {
     this.booking.service = service;
+    console.log(this.booking);
   }
 
   getService(): Item {
@@ -28,7 +36,24 @@ export class BookingService {
   }
 
   resetbooking(): void {
-    this.booking = {} as Appointment;
+    this.booking = {
+      client: undefined,
+      service: undefined,
+      addons: [],
+      date: '',
+      time: '',
+    };
+    console.log(this.booking);
+  }
+
+  insertAddon(addon: AddOn): void {
+    this.booking.addons.push(addon);
+    console.log(this.booking);
+  }
+
+  removeAddon(addon: AddOn): void {
+    this.booking.addons = this.booking.addons.filter(a => a.title != addon.title);
+    console.log(this.booking);
   }
 
 }

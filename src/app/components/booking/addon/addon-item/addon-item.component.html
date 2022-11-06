@@ -1,1 +1,22 @@
-<p>addon-item works!</p>
+<div class="my-4">
+  <!--Addon Title and toggle-->
+  <div class="flex justify-between px-4 items-center">
+    <span class="text-lg">{{data.title}}</span>
+    <!--Toggle Switch-->
+    <div class="relative h-[1.5rem] rounded-full aspect-video transition-colors ease-in-out duration-500" [ngClass]="isChecked? 'bg-actionColor' : 'bg-gray-400'">
+      <input type="checkbox" [checked]="isChecked" class="hidden"/>
+      <span class="absolute bg-secondaryColor rounded-full aspect-square h-[1rem] top-[.25rem] left-[.25rem] transition-transform ease-in-out duration-500 cursor-pointer" [ngClass]="isChecked? 'translate-x-[18px]' : ''" (click)="toggle()"></span>
+    </div>
+  </div>
+  <div class="flex justify-end gap-4" [ngClass]="isChecked? '': 'hidden'">
+    <span class="text-errorColor text-sm">+ {{data.duration}} min.</span>
+    <span class="text-errorColor text-sm">+ {{data.price | currency: 'USD'}}</span>
+  </div>
+  <!--Addon More Info-->
+  <div class="px-4">
+    <span class="text-xs text-blue-300 cursor-pointer" (click)="toggleDescription()">{{showDescription? 'Show Less' : 'Show More' }}</span>
+    <div [ngClass]="showDescription? '': 'hidden'">
+      <span>{{data.description}}. This servicae adds {{data.duration}} min. plus {{data.price | currency: 'USD'}} to your service.</span>
+    </div>
+  </div>
+</div>

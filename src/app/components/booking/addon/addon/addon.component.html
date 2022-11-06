@@ -1,1 +1,8 @@
-<p>addon works!</p>
+<div class="flex flex-col items-center">
+  <span class="text-sm">Would you like to add any additional services?</span>
+  <div class="w-[18rem] shadow-xl rounded-xl bg-secondaryColor border p-2">
+    <ng-container *ngFor="let addon of addons">
+      <addon-item-comp [data]="addon" (addonToggled)="handleAddOnToggle($event, addon)"></addon-item-comp>
+    </ng-container>
+  </div>
+</div>

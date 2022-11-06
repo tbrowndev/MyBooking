@@ -1,0 +1,14 @@
+.stepper {
+  animation: slideIn 500ms ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+      margin-left: 100%;
+      opacity: 0;
+  }
+  100% {
+      margin-left: 0%;
+      opacity: 1;
+  }
+}

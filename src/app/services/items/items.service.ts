@@ -16,7 +16,6 @@ export class ItemsService {
   }
 
   setItems(): void {
-    this.serviceItems = []
     for (let i=0; i<20; i++) {
       this.serviceItems.push({
         title: 'Service: ' + i,

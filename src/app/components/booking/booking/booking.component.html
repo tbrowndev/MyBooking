@@ -1,24 +1,32 @@
-<div>
-  <!--Booking Process Indicator-->
-  <div class="grid grid-cols-5 p-4">
-    <div class="text-sm text-center rounded-l-xl" [ngClass]="step >= 2? 'font-bold bg-actionColor text-white' : ''">Addt'l Services</div>
-    <div class="text-sm text-center" [ngClass]="step >= 3? 'font-bold bg-actionColor text-white' : ''">Appt Date & Time</div>
-    <div class="text-sm text-center" [ngClass]="step >= 4? 'font-bold bg-actionColor text-white' : ''">Client Info</div>
-    <div class="text-sm text-center" [ngClass]="step >= 5? 'font-bold bg-actionColor text-white' : ''">Confirmation</div>
-    <div class="text-sm text-center rounded-r-xl" [ngClass]="step >= 6? 'font-bold bg-actionColor text-white' : ''">Done</div>
+<div class="flex flex-col items-center">
+  <!--Booking Process Indicator for larger screens-->
+  <div class="hidden md:grid md:grid-cols-5 md:p-4">
+    <div class="text-sm text-center rounded-l-xl px-2" [ngClass]="step >= 2? 'font-bold bg-actionColor text-white' : ''">Addt'l Services</div>
+    <div class="text-sm text-center px-2" [ngClass]="step >= 3? 'font-bold bg-actionColor text-white' : ''">Appt Info</div>
+    <div class="text-sm text-center px-2" [ngClass]="step >= 4? 'font-bold bg-actionColor text-white' : ''">Client Info</div>
+    <div class="text-sm text-center px-2" [ngClass]="step >= 5? 'font-bold bg-actionColor text-white' : ''">Confirmation</div>
+    <div class="text-sm text-center rounded-r-xl px-2" [ngClass]="step >= 6? 'font-bold bg-actionColor text-white' : ''">Done</div>
   </div>
+
   <!--Steps of Booking Process-->
-  <div [ngClass]="step == 2? '' : 'hidden'">
-    <addon-comp></addon-comp>
+  <div class="w-[20rem] md:w-[40rem] lg:w-[60rem] flex flex-col items-center p-4">
+    <div [ngClass]="step == 2? 'stepper' : 'hidden'">
+      <addon-comp></addon-comp>
+    </div>
+    <div [ngClass]="step == 3? 'stepper' : 'hidden'">
+      <span>Select a Date and Time</span>
+    </div>
+    <div [ngClass]="step == 4? 'stepper' : 'hidden'">
+      <span>Enter Your Info</span>
+    </div>
+    <div [ngClass]="step == 5? 'stepper' : 'hidden'">
+      <span>Confirm Booking Details</span>
+    </div>
+    <div [ngClass]="step == 6? 'stepper' : 'hidden'">
+      <span>Booking Successful</span>
+    </div>
   </div>
-  <div [ngClass]="step == 3? '' : 'hidden'">
-  </div>
-  <div [ngClass]="step == 4? '' : 'hidden'">
-  </div>
-  <div [ngClass]="step == 5? '' : 'hidden'">
-  </div>
-  <div [ngClass]="step == 6? '' : 'hidden'">
-  </div>
+
   <!--Actions for each step-->
   <div class="flex justify-center items-center gap-4" [ngClass]="step == 6? 'hidden' : ''">
     <input type="button" value="Start Over" class="bg-actionColor rounded-lg px-2 py-1 text-secondaryColor hover:opacity-90 cursor-pointer disabled:opacity-50" (click)="reset()"/>
