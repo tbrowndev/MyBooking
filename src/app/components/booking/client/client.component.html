@@ -1,0 +1,43 @@
+<form [formGroup]="clientForm" class="p-4 rounded-xl shadow-xl w-[18rem] md:w-[36rem]">
+  <h1>Please Enter your Information</h1>
+
+  <div *ngIf="clientForm.invalid && (clientForm.dirty || clientForm.touched)" class="text-errorColor">
+    <span *ngIf="clientForm.controls.firstname.errors?.['required'] && (clientForm.controls.firstname.dirty || clientForm.controls.firstname.touched)">Firstname required.</span>
+    <span *ngIf="clientForm.controls.firstname.errors?.['minlength'] && (clientForm.controls.firstname.dirty || clientForm.controls.firstname.touched)">Firstname must be at least 3 characters.</span>
+
+    <span *ngIf="clientForm.controls.lastname.errors?.['required'] && (clientForm.controls.lastname.dirty || clientForm.controls.lastname.touched)">Lastname required.</span>
+    <span *ngIf="clientForm.controls.lastname.errors?.['minlength'] && (clientForm.controls.lastname.dirty || clientForm.controls.lastname.touched)">Lastname must be at least 3 characters.</span>
+
+    <span *ngIf="clientForm.controls.email.errors?.['required'] && (clientForm.controls.email.dirty || clientForm.controls.email.touched)">Email required.</span>
+    <span *ngIf="clientForm.controls.email.errors?.['email'] && (clientForm.controls.email.dirty || clientForm.controls.email.touched)">Email is invalid.</span>
+
+    <span *ngIf="clientForm.controls.phone.errors?.['required'] && (clientForm.controls.phone.dirty || clientForm.controls.phone.touched)">Phone required.</span>
+    <span *ngIf="clientForm.controls.phone.errors?.['pattern'] && (clientForm.controls.phone.dirty || clientForm.controls.phone.touched)">Phone must be of format 123-456-7890.</span>
+    
+  </div>
+
+  <!-- Firstname and Lastname -->
+  <div class="my-3">
+    <label>Name</label>
+    <div class="w-full flex flex-wrap md:flex-nowrap gap-1">
+      <input type="text" id="firstname" formControlName="firstname" minlength="3" class="p-2 rounded-lg border-2 basis-1/2 outline-none" [ngClass]="clientForm.controls.firstname.invalid && (clientForm.controls.firstname.dirty || clientForm.controls.firstname.touched)? 'border-errorColor' : ''" placeholder="Firstname" required/>
+      <input type="text" id="lastname" formControlName="lastname" minlength="3" class="p-2 rounded-lg border-2 basis-1/2 outline-none" [ngClass]="clientForm.controls.lastname.invalid && (clientForm.controls.lastname.dirty || clientForm.controls.lastname.touched)? 'border-errorColor' : ''" placeholder="Lastname" required/>
+    </div>
+  </div>
+  
+  <!-- Email -->
+  <div class="my-3">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" formControlName="email" class="p-2 rounded-lg border-2 w-full outline-none" [ngClass]="clientForm.controls.email.invalid && (clientForm.controls.email.dirty || clientForm.controls.email.touched)? 'border-errorColor' : ''" placeholder="Email Address" required/>
+  </div>
+  <!-- Phone -->
+  <div class="my-3">
+    <label for="phone">Phone</label>
+    <input type="tel" id="phone" name="phone" formControlName="phone" class="p-2 rounded-lg border-2 w-full outline-none" [ngClass]="clientForm.controls.phone.invalid && (clientForm.controls.phone.dirty || clientForm.controls.phone.touched)? 'border-errorColor' : ''" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+  </div>
+  <!-- Extra Notes abotu Service -->
+  <div class="my-3">
+    <label for="notes">Notes</label>
+    <textarea type="text" id="notes" name="notes" formControlName="notes"  class="p-2 rounded-lg border w-full resize-none overflow-scroll outline-none" placeholder="Notes" rows="3"></textarea>
+  </div>
+</form>

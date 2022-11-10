@@ -1,0 +1,50 @@
+<div class="w-[18rem] md:w-[36rem] shadow-xl rounded-xl bg-secondaryColor border p-4 my-2">
+  <span class="text-gray-500 font-bold">Client Information</span>
+  <div class="flex flex-col border p-2 rounded-lg my-2">
+    <span class="text-actionColor">Name:</span>
+    <span>{{summary.client?.firstname}} {{summary.client?.lastname}}</span>
+  </div>
+  <div class="flex flex-col flex-wrap gap-2 my-2">
+    <span class="text-actionColor">Contant Info:</span>
+    <div class="flex flex-wrap gap-1">
+      <span class="border p-2 rounded-lg">{{summary.client?.email}}</span>
+      <span class="border p-2 rounded-lg">{{summary.client?.phone}}</span>
+    </div>
+    
+  </div>
+  <div class=" flex flex-col border p-2 rounded-lg my-2">
+    <span class="text-actionColor">Notes:</span>
+    <span>{{summary.client?.notes}}</span>
+  </div>
+</div>
+<div class="w-[18rem] md:w-[36rem] shadow-xl rounded-xl bg-secondaryColor border p-4 my-2">
+  <span class="text-gray-500 font-bold">Selected Service</span>
+  <div class="flex justify-between w-full">
+    <span class="md:basis-2/4 text-actionColor">{{summary.service?.title}}</span>
+    <span class="md:basis-1/4 text-right">{{summary.service?.duration}} mins</span>
+    <span class="md:basis-1/4 text-right">{{summary.service?.price | currency: 'USD'}}</span>
+  </div>
+</div>
+<div class="w-[18rem] md:w-[36rem] shadow-xl rounded-xl bg-secondaryColor border p-4 my-2">
+  <span class="text-gray-500 font-bold">Appointment Date</span>
+  <div class="w-full flex justify-end">
+    <span class="text-actionColor">{{summary.date | date: 'MMM dd, YYYY'}} @ {{summary.time}}</span>
+  </div>
+</div>
+<div class="w-[18rem] md:w-[36rem] shadow-xl rounded-xl bg-secondaryColor border p-4 my-2">
+  <span class="text-gray-500 font-bold">Service Addon(s)</span>
+  <ng-container *ngFor="let addon of summary.addons">
+    <div class="flex justify-between w-full">
+      <span class="md:basis-2/4 text-actionColor">{{addon.title}}</span>
+      <span class="md:basis-1/4 text-right">+ {{addon.duration}} mins</span>
+      <span class="md:basis-1/4 text-right">+ {{addon.price | currency: 'USD'}}</span>
+    </div>
+  </ng-container>
+</div>
+<div class="w-[18rem] md:w-[36rem] shadow-xl rounded-xl bg-secondaryColor border p-4 my-2">
+  <div class="flex justify-between w-full">
+    <span class="md:basis-2/4 text-actionColor font-bold">Total: </span>
+    <span class="md:basis-1/4 text-right font-bold">{{totalDuration()}} mins</span>
+    <span class="md:basis-1/4 text-right font-bold">{{totalPrice() | currency: 'USD'}}</span>
+  </div>
+</div>

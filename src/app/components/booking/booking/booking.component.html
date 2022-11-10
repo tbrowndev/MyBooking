@@ -14,16 +14,20 @@
       <addon-comp></addon-comp>
     </div>
     <div [ngClass]="step == 3? 'stepper' : 'hidden'">
-      <appointment-comp></appointment-comp>
+      <appointment-comp (isValid)="appointmentValid = $event"></appointment-comp>
     </div>
     <div [ngClass]="step == 4? 'stepper' : 'hidden'">
-      <span>Enter Your Info</span>
+      <client-comp (isValid)="clientValid = $event"></client-comp>
     </div>
     <div [ngClass]="step == 5? 'stepper' : 'hidden'">
-      <span>Confirm Booking Details</span>
+      <confirm-comp [summary]="getBooking()"></confirm-comp>
     </div>
     <div [ngClass]="step == 6? 'stepper' : 'hidden'">
-      <span>Booking Successful</span>
+      <div class="flex gap-2 items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="rounded-full bg-successColor shadow-lg animate-bounce" height="48" width="48"><path class="shadow-lg" d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"/></svg>
+        <span class="font-bold text-lg">Booking Successful!</span>
+      </div>
+      <span>Check out more <a class="underline text-actionColor" [routerLink]="['/services']">Services</a></span>
     </div>
   </div>
 
@@ -31,6 +35,10 @@
   <div class="flex justify-center items-center gap-4" [ngClass]="step == 6? 'hidden' : ''">
     <input type="button" value="Start Over" class="bg-actionColor rounded-lg px-2 py-1 text-secondaryColor hover:opacity-90 cursor-pointer disabled:opacity-50" (click)="reset()"/>
     <input type="button" value="Go Back" class="bg-actionColor rounded-lg px-2 py-1 text-secondaryColor hover:opacity-90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" [disabled]="step == 2" (click)="goBack()"/>
-    <input type="button" value="Next" class="bg-actionColor rounded-lg px-2 py-1 text-secondaryColor hover:opacity-90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" [disabled]="step == 6" (click)="advance()"/>
+    <input type="button" [value]="nextButtonText" class="bg-actionColor rounded-lg px-2 py-1 text-secondaryColor hover:opacity-90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" [disabled]="step == 6 || !isValid()" (click)="advance()"/>
+    <svg *ngIf="isBooking" class="animate-spin -ml-1 mr-3 h-5 w-5 text-actionColor" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
   </div>
 </div>

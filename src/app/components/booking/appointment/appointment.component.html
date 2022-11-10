@@ -1,9 +1,9 @@
 <div class="flex flex-col items-center gap-2">
   <span class="text-sm">Select a Date and Time</span>
   <div class="w-[18rem] md:w-[36rem] shadow-xl rounded-xl bg-secondaryColor border p-2">
-    <calendar-comp></calendar-comp>
+    <calendar-comp (dateSelected)="updateTimes($event)"></calendar-comp>
   </div>
   <div class="w-[18rem] md:w-[36rem] shadow-xl rounded-xl bg-secondaryColor border p-2">
-    <time-comp></time-comp>
+    <time-comp [dateForTimes]="selectedDate" (timeSelected)="timeSelected($event)"></time-comp>
   </div>
 </div>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { GEN_TEST_ADDONS } from 'src/app/common/testing/testing';
 import AddOn from 'src/app/common/types/service/addon';
 
 @Injectable({
@@ -13,13 +14,6 @@ export class AddonService {
   }
 
   getAddons(): void {
-    for (let i=0; i<5; i++) {
-      this.addons.push({
-        title: 'Addon' + i,
-        description: 'Culpa et pariatur anim ea ipsum ad aliqua sint eiusmod',
-        duration: 10,
-        price: 5,
-      })
-    }
+    this.addons = GEN_TEST_ADDONS(5);
   }
 }

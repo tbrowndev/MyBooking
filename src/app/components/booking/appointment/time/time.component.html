@@ -1,1 +1,5 @@
-<p>time works!</p>
+<div class="w-full text-center p-2">{{dateForTimes | date: 'MMMM dd, yyyy'}} <span *ngIf="selectedTime.length > 0">@ {{selectedTime}}</span></div>
+<div class="w-full flex flex-wrap p-4 gap-2">
+    <span class="text-sm w-full text-center" *ngIf="times.length == 0">-- No Times --</span>
+    <span *ngFor="let time of times" class="border rounded-full w-[5rem] text-center py-1 text-sm border-actionColor cursor-pointer hover:bg-actionColor hover:text-white" (click)="selectTime(time)">{{time}}</span>
+</div>

@@ -1,1 +1,26 @@
-<p>calendar works!</p>
+<div class="flex flex-col items-center">
+  <!--Month Year and Arrows-->
+  <div class="flex items-center h-[3rem] w-full mb-4">
+    <div class="basis-1/4 flex flex-col items-center">
+        <input type="button" value="Prev" class="w-[3rem] border rounded-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" (click)="prevMonth()" [disabled]="isCurrentMonth()"/>
+    </div>
+    <div class=" basis-1/2 flex flex-col items-center">
+        <span class="text-sm text-slate-500">{{this.current | date: 'yyyy'}}</span>
+        <span class="text-lg">{{this.current | date: 'MMMM'}}</span>
+    </div>
+    <div class="basis-1/4 flex flex-col items-center">
+      <input type="button" value="Next" class="w-[3rem] border rounded-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" (click)="nextMonth()"/>
+    </div>
+  </div>
+
+  <!-- Days in Month -->
+  <div class="w-full">
+    <div class="grid grid-cols-7 justify-items-center">
+      <span>S</span><span>M</span><span>T</span><span>W</span><span>Th</span><span>F</span><span>S</span>
+    </div>
+    <div class="grid grid-cols-7 justify-items-center">
+      <span [ngClass]="firstOfMonthDay==0? 'hidden':firstOfMonthDay==1? 'col-span-1':firstOfMonthDay==2? 'col-span-2':firstOfMonthDay==3? 'col-span-3':firstOfMonthDay==4? 'col-span-4':firstOfMonthDay==5? 'col-span-5':'col-span-6'"></span>
+      <button class="rounded-full w-[1.5rem] h-[1.5rem] font-bold hover:bg-actionColor hover:text-white disabled:text-gray-500 disabled:cursor-not-allowed" [disabled]="isPast(i+1)" *ngFor="let day of dayCounter(daysOfMonth); let i = index" (click)="selectDay(i+1)">{{i+1}}</button>
+    </div>
+  </div>
+</div>

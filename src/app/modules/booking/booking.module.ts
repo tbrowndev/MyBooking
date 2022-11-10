@@ -6,6 +6,10 @@ import { AddonItemComponent } from '../../components/booking/addon/addon-item/ad
 import { AppointmentComponent } from 'src/app/components/booking/appointment/appointment.component';
 import { CalendarComponent } from 'src/app/components/booking/appointment/calendar/calendar.component';
 import { TimeComponent } from 'src/app/components/booking/appointment/time/time.component';
+import { ClientComponent } from 'src/app/components/booking/client/client.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmationComponent } from 'src/app/components/booking/confirmation/confirmation.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -16,10 +20,14 @@ import { TimeComponent } from 'src/app/components/booking/appointment/time/time.
     AddonItemComponent,
     AppointmentComponent,
     CalendarComponent,
-    TimeComponent
+    TimeComponent,
+    ClientComponent,
+    ConfirmationComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    AppRoutingModule
   ]
 })
 export class BookingModule { }

@@ -3,6 +3,7 @@ type ClientForm = {
   lastname: string
   email: string
   phone: string
+  notes: string
 }
 
 export default ClientForm;
